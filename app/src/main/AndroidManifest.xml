@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Randomizer">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.GroupResultAct"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.CreateGroupsFormAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
