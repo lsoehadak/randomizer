@@ -8,5 +8,6 @@ data class AppMenu(
 ) {
     companion object {
         const val CREATE_GROUP = 1
+        const val TASK_MAPPING = 2
     }
 }

@@ -21,17 +21,32 @@ class MainActivity : AppCompatActivity() {
             "Buat Grup",
             "Buat grup dengan membagi anggota secara random"
         )
+        val taskMappingMenuApp = AppMenu(
+            AppMenu.TASK_MAPPING,
+            R.drawable.ic_outline_add_task_24,
+            "Task Mapping",
+            "Bagi tugas ke semua PIC secara random"
+        )
 
         menuList.add(createRandomMenuApp)
+        menuList.add(taskMappingMenuApp)
 
         val adapter = AppMenuAdapter(
             this,
             menuList,
             object : AppMenuAdapter.AppMenuListener {
                 override fun onAppMenuSelected(appMenu: AppMenu) {
-                    when(appMenu.type) {
+                    when (appMenu.type) {
                         AppMenu.CREATE_GROUP -> {
-                            startActivity(Intent(this@MainActivity, CreateGroupsFormAct::class.java))
+                            startActivity(
+                                Intent(
+                                    this@MainActivity,
+                                    CreateGroupsFormAct::class.java
+                                )
+                            )
+                        }
+                        AppMenu.TASK_MAPPING -> {
+                            startActivity(Intent(this@MainActivity, TaskMappingFormAct::class.java))
                         }
                     }
                 }

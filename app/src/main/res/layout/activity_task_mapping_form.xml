@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CreateGroupsFormAct">
+    tools:context=".activity.TaskMappingFormAct">
 
     <include
         layout="@layout/layout_toolbar"
@@ -26,13 +26,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.3" />
-
             <TextView
                 android:id="@+id/textView5"
                 style="@style/RegularTextViewStyle"
@@ -42,7 +35,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:letterSpacing="0.04"
-                android:text="Silahkan masukkan spesifikasi grup dan nama anggota yang akan dibagi ke dalam grup tersebut"
+                android:text="Silahkan masukkan daftar nama PIC dan tugas yang akan dipasangkan"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +49,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:letterSpacing="0.04"
-                android:text="Anggota Per Grup"
+                android:text="Nama PIC"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -64,26 +57,44 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/pic_input_container"
                 style="@style/OutlinedTextFieldStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
                 app:endIconDrawable="@drawable/ic_baseline_cancel_24"
                 app:endIconMode="clear_text"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_number_of_members"
+                    android:id="@+id/et_pic"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cth : 10"
-                    android:inputType="number" />
+                    android:hint="Cth : Selinda Devi"
+                    android:inputType="textCapWords" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_pic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                app:chipSpacingHorizontal="8dp"
+                app:chipSpacingVertical="4dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/fab_next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pic_input_container"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -93,14 +104,30 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:letterSpacing="0.04"
-                android:text="Nama Anggota"
+                android:text="Nama Task"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                app:layout_constraintTop_toBottomOf="@id/cg_pic"
+                tools:layout_editor_absoluteY="222dp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/RegularTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:letterSpacing="0.04"
+                android:text="Jumlah task tidak boleh lebih kecil dari jumlah PIC yang telah dimasukkan"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/task_input_container"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/member_name_container"
+                android:id="@+id/task_input_container"
                 style="@style/OutlinedTextFieldStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -114,17 +141,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView9">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_member_name"
+                    android:id="@+id/et_task"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cth : Selinda Devi"
+                    android:hint="Cth : Introduction 1"
                     android:imeOptions="actionNext"
                     android:inputType="textCapWords" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.chip.ChipGroup
-                android:id="@+id/cg_member_name"
+                android:id="@+id/cg_task"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -136,7 +163,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/fab_next"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/member_name_container"
+                app:layout_constraintTop_toBottomOf="@+id/task_input_container"
                 app:layout_constraintVertical_bias="0.0">
 
             </com.google.android.material.chip.ChipGroup>
@@ -153,31 +180,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
                 app:tint="@color/white" />
-
-            <TextView
-                style="@style/RegularTextViewStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:letterSpacing="0.05"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/member_name_container" />
-
-            <TextView
-                android:id="@+id/textView9"
-                style="@style/RegularTextViewStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:letterSpacing="0.04"
-                android:text="Jumlah anggota minimal sama atau lebih besar dari anggota per grup"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/member_name_container"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

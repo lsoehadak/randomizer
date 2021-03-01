@@ -44,6 +44,14 @@ class AppMenuAdapter(
                         )
                     )
                 }
+                AppMenu.TASK_MAPPING -> {
+                    itemView.container.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            context,
+                            android.R.color.holo_blue_dark
+                        )
+                    )
+                }
             }
 
             itemView.iv_icon.setImageResource(appMenu.iconResId)
